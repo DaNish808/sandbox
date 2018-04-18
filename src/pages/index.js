@@ -3,7 +3,8 @@ import Link from 'gatsby-link';
 
 const IndexPage = () => (
   <div>
-    <h2>Welcome! There's not much to see yet, but have a look around :)</h2>
+    <h2>Welcome!</h2>
+    <p>There's not much to see yet, but have a look around :)</p>
   </div>
 );
 
