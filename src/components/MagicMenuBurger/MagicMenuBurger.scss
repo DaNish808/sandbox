@@ -1,0 +1,38 @@
+@import "../../styles/colors";
+
+$side-len: 50%;
+$line-thickness: 15%;
+$line-end-radius: ($line-thickness / 1%) / 2 * 1px; 
+
+.magic-menu-burger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .magic-menu-burger-graphic {
+    height: $side-len * 0.9;
+    width: $side-len;
+    position: relative;
+  
+    .menu-burger-line {
+      position: absolute;
+      height: $line-thickness;
+      width: 100%;
+      border-radius: $line-end-radius;
+      background-color: $text-color;
+      transition-delay: 500ms;
+      transition-duration: 500ms;
+    }
+    .line-a {
+      top: 0;
+    }
+    .line-b {
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+    .line-c {
+      bottom: 0;
+    }
+  }
+}

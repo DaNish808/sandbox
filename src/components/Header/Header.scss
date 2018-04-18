@@ -1,0 +1,29 @@
+@import '../../styles/layout';
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+header.main-header {
+  height: $header-height;
+  padding: 1vh;
+  display: flex;
+  align-items: center;
+
+  .smiley-icon {
+    @include square(6vh);
+    display: inline-block;
+    margin-right: 1vh;
+
+    .smiley-icon-head {
+      stroke: $darkred;
+    }
+    .smiley-icon-eyes > ellipse {
+      fill: $darkred;
+    }
+    .smiley-icon-mouth {
+      stroke: $darkred;
+    }
+  }
+  h1 {
+    display: inline-block;
+  }
+}

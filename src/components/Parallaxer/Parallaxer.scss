@@ -1,0 +1,42 @@
+@import '../../styles/colors';
+
+$pattern-intensity: 0.04;
+
+
+@mixin size-restrict {
+  width: 100%;
+  overflow: hidden;
+}
+.background-container {
+  @include size-restrict;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  z-index: -5;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: $background-color;
+  
+  .background {
+    @include size-restrict;
+    position: absolute;
+    height: 2000%;
+  }
+  .background-a {
+    z-index: -3;
+    /* background: repeating-linear-gradient(45deg, #00000000 0px, #6951FF22 100px, #00000000 120px); */
+    /* background: repeating-linear-gradient(135deg, #00000000 0px, #6951FF06 100px, #00000000 120px); */
+    background: repeating-linear-gradient(135deg, #00000000 0px, rgba($background-secondary-color, $pattern-intensity) 100px, #00000000 120px);
+  }
+  .background-b {
+    z-index: -4;
+    /* background: repeating-linear-gradient(-45deg, #00000000 0px, #6951FF22 100px, #00000000 120px); */
+    /* background: repeating-linear-gradient(-135deg, #00000000 0px, #6951FF06 100px, #00000000 120px); */
+    background: repeating-linear-gradient(-135deg, #00000000 0px, rgba($background-secondary-color, $pattern-intensity) 100px, #00000000 120px);
+  }
+  .background-c {
+    z-index: -5;
+    /* background: repeating-linear-gradient(-30deg, #00000000 0px, #6951FF12 200px, #00000000 400px); */
+    background: repeating-linear-gradient(-30deg, #00000000 0px, rgba($background-secondary-color, 2.5 * $pattern-intensity) 200px, #00000000 400px);
+  }
+}

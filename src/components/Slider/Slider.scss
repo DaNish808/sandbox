@@ -1,0 +1,97 @@
+@import '../../styles/colors';
+
+$unfilled-color:  hsl(hue($background-color), saturation($background-color), 87%);
+
+.sliderbar-container {
+  height: 20px;
+  width: calc(100% - 8rem);
+  margin: 0.25rem 2.5rem;
+  position: relative;
+}
+
+.sliderbar {
+  position: absolute;
+  left: 0;
+  top: 50%; transform: translateY(-50%);
+  height: 7px;
+}
+.sliderbar-unfilled {
+  z-index: -1;
+  width: 100%;
+  background-color: $unfilled-color;
+}
+.sliderbar-filled {
+  width: 50%;
+  background-color: $primary-color;
+}
+.slider-button {
+  z-index: 2;
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  background-color: $primary-color;
+  border-radius: 50%;
+}
+.slider-button-indicator {
+  z-index: 3;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  height: 45%;
+  width: 45%;
+  border-radius: 50%;
+  background-color: white;
+  content: ''
+}
+.slider-button:hover .slider-button-indicator {
+  background-color: $primary-color;
+}
+
+.endpoint {
+  position: absolute;
+  top: 0;
+  width: 4px;
+  border-radius: 2px;
+}
+.endpoint-left {
+  left: -2px;
+  background-color: $primary-color;
+}
+.endpoint-right {
+  right: -2px;
+  background-color: $unfilled-color;
+}
+
+
+.info-container {
+  display: grid;
+  grid-template-columns: 3rem auto 6rem;
+  grid-gap: 16px;
+  color: $text-color;
+}
+
+.value-slider-label-container {
+  transform: translateY(-5px);
+  position: relative;
+}
+.value-slider-label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 90%;
+  color: hsl(hue($text-color), saturation($text-color), 40%);
+}
+
+.min-slider-label {
+  text-align: right;
+}
+.max-slider-label {
+  text-align: left;
+}
+
+.sliderbar-filled, 
+.slider-button, 
+.slider-button-indicator, 
+.value-slider-label {
+  transition-duration: 80ms;
+  transition-timing-function: ease-in;
+}

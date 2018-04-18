@@ -1,0 +1,46 @@
+@import '../../styles/colors';
+@import '../../styles/mixins';
+
+.slideshow-container {
+  position: relative;
+  grid-area: slides;
+  height: 60vh;
+  display: grid;
+  grid-template-areas: 'left none right';
+}
+
+.slideshow {
+  grid-area: 1 / 1 / 1 / 4;
+  @include shadowBorder;
+  position: relative;
+  border-radius:8px;
+  overflow: hidden;
+}
+
+.slideshow-slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.outgoing-slide {
+  left: 0;
+}
+.current-slide, .outgoing-slide {
+  transition: left;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in;
+}
+
+@mixin clicker {
+  z-index: 3;
+
+}
+.click-left {
+  grid-area: left;
+  @include clicker;
+}
+.click-right {
+  grid-area: right;
+  @include clicker;
+}
