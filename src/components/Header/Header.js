@@ -4,11 +4,11 @@ import Link from 'gatsby-link';
 import './Header.scss';
 
 const Header = ({ siteTitle }) => (
-  <div>
+  <header>
       <h1 style={{ margin: 0 }}>
         <Link to="/">{siteTitle}</Link>
       </h1>
-  </div>
+  </header>
 );
 
 export default Header;
