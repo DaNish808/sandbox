@@ -1,0 +1,41 @@
+@import '../../styles/colors';
+
+
+.slideshow-container {
+  background-color: $lightgray;
+  border-radius: 2rem;
+
+  .slideshow {
+    .slide {
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-color: rgba(white, 0);
+    
+      .smiley-icon {
+        margin: auto;
+      }
+    }
+    
+    .slide.use-anything {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    
+      h1 {
+        margin-bottom: 2rem;
+      }
+    }
+    
+    img.slide {
+      margin: auto;
+    }
+  }
+  
+  div, header, main, section, article, aside, nav, footer {
+    background-color: rgba(white, 0);
+  }
+}

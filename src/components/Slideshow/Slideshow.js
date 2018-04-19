@@ -33,6 +33,13 @@ class Slideshow extends PureComponent {
       length: this.props.children.length,
       currentSlide: 0
     })
+    window.addEventListener('keydown', this.handleKeyDown)
+  }
+
+  handleKeyDown = ({ key }) => {
+    if(new RegExp('Arrow[Left|Right]').exec(key)) {
+      this.handleClick(key === 'ArrowRight' ? 'right' : 'left')();
+    }
   }
 
   handleClick = direction => () => {
@@ -110,8 +117,8 @@ class Slideshow extends PureComponent {
             </div>
           }
         </div>
-        <div className="click-left" onClick={this.handleClick('left')}></div>
-        <div className="click-right" onClick={this.handleClick('right')}></div>
+        <div className="click-left slideshow-button" onClick={this.handleClick('left')}></div>
+        <div className="click-right slideshow-button" onClick={this.handleClick('right')}></div>
       </div>
     )
   }

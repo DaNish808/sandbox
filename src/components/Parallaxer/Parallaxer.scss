@@ -1,25 +1,24 @@
-@import '../../styles/colors';
+$background-color: white;
+$background-secondary-color: black;
 
-$pattern-intensity: 0.04;
-
+$pattern-intensity: 0.1;
 
 @mixin size-restrict {
-  width: 100%;
   overflow: hidden;
+  position: absolute;
+  left: 0; right: 0;
 }
 .background-container {
   @include size-restrict;
   perspective: 1px;
   transform-style: preserve-3d;
   z-index: -5;
-  position: fixed;
-  top: 0;
-  bottom: 0;
+  position: absolute;
+  left: 0; right: 0;
   background-color: $background-color;
   
   .background {
     @include size-restrict;
-    position: absolute;
     height: 2000%;
   }
   .background-a {

@@ -73,6 +73,7 @@ table {
 
 
 main.page {
+  box-sizing: border-box;
   min-height: $content-height;
   padding: 2vw;
 }

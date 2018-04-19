@@ -1,5 +1,4 @@
-@import '../../styles/colors';
-@import '../../styles/mixins';
+
 
 .slideshow-container {
   position: relative;
@@ -11,7 +10,6 @@
 
 .slideshow {
   grid-area: 1 / 1 / 1 / 4;
-  @include shadowBorder;
   position: relative;
   border-radius:8px;
   overflow: hidden;

@@ -1,0 +1,31 @@
+@import "../../styles/colors";
+
+
+main.parallaxer-page {
+  height: fit-content;
+  background-color: #00000000;
+  position: relative;
+  
+  section {
+    max-width: 800px;
+    min-width: 250px;
+    margin: auto;
+    background-color: #00000000;
+    
+    h2 {
+      font-size: 150%;
+      margin: 1rem auto;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid $gray;
+    }
+    
+    p {
+      margin: 2rem;
+    }
+    p:nth-child(even) {
+      padding: 2rem;
+      background-color: rgba(white, 0.4);
+      border-radius: 1rem;
+    }
+  }
+}
