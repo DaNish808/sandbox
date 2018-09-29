@@ -21,9 +21,7 @@ class Slider extends PureComponent {
     step = parseFloat(step)
 
     const clickOffsetVal = (max - min) * percent
-    let stepVal = clickOffsetVal / step
-    const roundUp = stepVal % 1 >= 0.5
-    stepVal = roundUp ? Math.ceil(stepVal) : Math.floor(stepVal)
+    let stepVal = Math.round(clickOffsetVal / step)
     return stepVal * step + min
   }
 
@@ -53,6 +51,7 @@ class Slider extends PureComponent {
   updateValue = e => {
     const { x: xFraction } = mousePositionPercentElement(e, this.sliderBarEl)
     const value = this.calcNearestValue(xFraction)
+    console.log(value);
     if(value >= this.props.min && value <= this.props.max)this.props.onChange(value)  
   }
 
@@ -65,7 +64,7 @@ class Slider extends PureComponent {
     if(!min) min = 0;
     if(!max) max = 1;
     if(!step) step = (max - min) / 10;
-    if(!value) value = (max - min) / 2;
+    if(!value && value !== 0) value = (max - min) / 2;
     if(!minLabel) minLabel = min;
     if(!maxLabel) maxLabel = max;
     if(!valueLabel) valueLabel = value;
