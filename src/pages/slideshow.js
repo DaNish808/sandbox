@@ -39,7 +39,7 @@ const IndexPage = () => (
       />
       <Slide
         title="It's Dynamic"
-        msg="Each slide is simply a child component. You need a minimum of two, but there's no upper limit to how many you can add. As a bonus slides can be added or removed dynamically as needed."
+        msg="Each slide is simply a child component. You need a minimum of two, but there's no upper limit to how many you can add. As slides can be added or removed dynamically as needed."
       />
       <div className="slide use-anything">
         <h1>Use Anything</h1>

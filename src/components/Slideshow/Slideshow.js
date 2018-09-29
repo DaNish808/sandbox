@@ -3,15 +3,25 @@ import './Slideshow.scss'
 
 
 const style = {
-  outRight: {
-    left: '100%'
-  },
-  outLeft: {
-    left: '-100%'
-  },
-  inCenter: {
+  outRight: incoming => incoming ? 
+    {
+      left: '100%',
+      transition: 'none'
+    } :
+    {
+      left: '100%'
+    },
+  outLeft: incoming => incoming ? 
+    {
+      left: '-100%',
+      transition: 'none'
+    } :
+    {
+      left: '-100%'
+    },
+  inCenter: () => ({
     left: '0'
-  },
+  }),
 }
 
 
@@ -20,17 +30,17 @@ class Slideshow extends PureComponent {
     super()
     this.width = 75;
     this.state = {
-      length: 0,
+      slideLength: 0,
       currentSlide: -1,
       outgoingSlide: -1,
-      currentSlideStyle: style.inCenter,
+      currentSlideStyle: style.inCenter(),
       outgoingSlideStyle: null
     }
   }
 
   componentDidMount() {
     this.setState({
-      length: this.props.children.length,
+      slideLength: this.props.children.length,
       currentSlide: 0
     })
     window.addEventListener('keydown', this.handleKeyDown)
@@ -38,44 +48,52 @@ class Slideshow extends PureComponent {
 
   handleKeyDown = ({ key }) => {
     if(new RegExp('Arrow[Left|Right]').exec(key)) {
-      this.handleClick(key === 'ArrowRight' ? 'right' : 'left')();
+      this.handleClick(key === 'ArrowRight' ? 'right' : 'left')()
     }
   }
 
   handleClick = direction => () => {
-    let { 
-      currentSlide, outgoingSlide
+    // bring in current slide states
+    const { 
+      currentSlide, outgoingSlide, slideLength
     } = this.state
-    let currentSlideStyle,
-        outgoingSlideStyle,
-        outgoingSlideStyleFinal
+    let incomingSlideIndex, outgoingSlideIndex,
+        incomingSlideStyleInitial, incomingSlideStyleFinal,
+        outgoingSlideStyleInitial, outgoingSlideStyleFinal
 
-    outgoingSlide = currentSlide
-    outgoingSlideStyle = style.inCenter
+    // switch current slide to outgoing slide
+    outgoingSlideIndex = currentSlide
+    outgoingSlideStyleInitial = style.inCenter()
+
+    // give incoming slide initial properties
     if(direction === 'right') {
-      currentSlide = (this.state.currentSlide + 1) % this.state.length
-      currentSlideStyle = style.outLeft
-      outgoingSlideStyleFinal = style.outRight
+      incomingSlideIndex = (this.state.currentSlide + 1) % this.state.slideLength
+      incomingSlideStyleInitial = style.outLeft('incoming')
+      incomingSlideStyleFinal = style.inCenter()
+      outgoingSlideStyleFinal = style.outRight()
     }
     else if(direction === 'left') {
-      currentSlide = this.state.currentSlide > 0 ? this.state.currentSlide - 1 : this.state.length - 1
-      currentSlideStyle = style.outRight
-      outgoingSlideStyleFinal = style.outLeft
+      incomingSlideIndex = currentSlide > 0 ? currentSlide - 1 : slideLength - 1
+      incomingSlideStyleInitial = style.outRight('incoming')
+      incomingSlideStyleFinal = style.inCenter()
+      outgoingSlideStyleFinal = style.outLeft()
     }
 
     this.setState({
       ...this.state,
-      currentSlideStyle,
-      outgoingSlideStyle: style.inCenter,
-      currentSlide,
-      outgoingSlide,
+      currentSlideStyle: incomingSlideStyleInitial,
+      outgoingSlideStyle: outgoingSlideStyleInitial,
+      currentSlide: incomingSlideIndex,
+      outgoingSlide: outgoingSlideIndex
     }, () => {
       setTimeout(() => {
         this.setState({
           ...this.state,
-          currentSlideStyle: style.inCenter,
+          currentSlideStyle: style.inCenter(),
           outgoingSlideStyle: outgoingSlideStyleFinal
         })
+        
+        // reset outgoingSlide index
         setTimeout(() => {
           if(this.state.outgoingSlide !== -1) {
             this.setState({
@@ -87,6 +105,55 @@ class Slideshow extends PureComponent {
       }, 0) // not sure why but transitions don't work without the setTimeout func...
     })
   }
+  // handleClick = direction => () => {
+  //   // bring in current slide states
+  //   let { 
+  //     currentSlide, outgoingSlide
+  //   } = this.state
+  //   let currentSlideStyle,
+  //       outgoingSlideStyle,
+  //       outgoingSlideStyleFinal
+
+  //   // switch current slide to outgoing slide
+  //   outgoingSlide = currentSlide
+  //   outgoingSlideStyle = style.inCenter()
+
+  //   // give incoming slide initial properties
+  //   if(direction === 'right') {
+  //     currentSlide = (this.state.currentSlide + 1) % this.state.slideLength
+  //     currentSlideStyle = style.outLeft()
+  //     outgoingSlideStyleFinal = style.outRight()
+  //   }
+  //   else if(direction === 'left') {
+  //     currentSlide = this.state.currentSlide > 0 ? this.state.currentSlide - 1 : this.state.slideLength - 1
+  //     currentSlideStyle = style.outRight()
+  //     outgoingSlideStyleFinal = style.outLeft()
+  //   }
+
+  //   this.setState({
+  //     ...this.state,
+  //     currentSlideStyle,
+  //     outgoingSlideStyle: style.inCenter(),
+  //     currentSlide,
+  //     outgoingSlide,
+  //   }, () => {
+  //     setTimeout(() => {
+  //       this.setState({
+  //         ...this.state,
+  //         currentSlideStyle: style.inCenter(),
+  //         outgoingSlideStyle: outgoingSlideStyleFinal
+  //       })
+  //       setTimeout(() => {
+  //         if(this.state.outgoingSlide !== -1) {
+  //           this.setState({
+  //             ...this.state,
+  //             outgoingSlide: -1,
+  //           })
+  //         }
+  //       }, 300)
+  //     }, 0) // not sure why but transitions don't work without the setTimeout func...
+  //   })
+  // }
 
   slideInFrom = side => {
     if(side === 'left') {}
