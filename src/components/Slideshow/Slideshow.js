@@ -5,19 +5,19 @@ import './Slideshow.scss'
 const style = {
   outRight: incoming => incoming ? 
     {
-      left: '100%',
-      transition: 'none'
-    } :
-    {
-      left: '100%'
-    },
-  outLeft: incoming => incoming ? 
-    {
       left: '-100%',
       transition: 'none'
     } :
     {
       left: '-100%'
+    },
+  outLeft: incoming => incoming ? 
+    {
+      left: '100%',
+      transition: 'none'
+    } :
+    {
+      left: '100%'
     },
   inCenter: () => ({
     left: '0'

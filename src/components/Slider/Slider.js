@@ -51,7 +51,6 @@ class Slider extends PureComponent {
   updateValue = e => {
     const { x: xFraction } = mousePositionPercentElement(e, this.sliderBarEl)
     const value = this.calcNearestValue(xFraction)
-    console.log(value);
     if(value >= this.props.min && value <= this.props.max)this.props.onChange(value)  
   }
 

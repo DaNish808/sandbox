@@ -7,6 +7,7 @@ class Parallaxer extends React.Component {
     this.state = { 
       scrollY: 0
     };
+    this.scrollListener = null;
   }
 
   handleParallax = e => {
@@ -17,7 +18,11 @@ class Parallaxer extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleParallax);
+    this.scrollListener = window.addEventListener('scroll', this.handleParallax);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(this.scrollListener);
   }
 
   render() {
