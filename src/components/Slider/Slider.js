@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react'
-import Pointable from 'react-pointable'
-import { mousePositionPercentElement } from '../../utils/getMousePos'
-import './Slider.scss'
+import React, { PureComponent } from 'react';
+import Pointable from 'react-pointable';
+import { mousePositionPercentElement } from './getMousePos';
+
+import './Slider.scss';
 
 
 class Slider extends PureComponent {
@@ -56,10 +57,19 @@ class Slider extends PureComponent {
   }
 
   render() {
-    const { 
+    let { 
       min, max, step, value, 
       minLabel, maxLabel, valueLabel, 
     } = this.props
+
+    if(!min) min = 0;
+    if(!max) max = 1;
+    if(!step) step = (max - min) / 10;
+    if(!value) value = (max - min) / 2;
+    if(!minLabel) minLabel = min;
+    if(!maxLabel) maxLabel = max;
+    if(!valueLabel) valueLabel = value;
+
     return (
       <Pointable
         onPointerDown={this.handleSliderbarMouse(true)} 

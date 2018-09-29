@@ -14,6 +14,12 @@ const IndexPage = () => (
         <Link to="/slideshow">
           <li>Slideshow</li>
         </Link>
+        <Link to="/slider">
+          <li>Custom Slider</li>
+        </Link>
+        {/* <Link to="/bubbles">
+          <li>Bubbles</li>
+        </Link> */}
       </ul>
     </section>
   </main>

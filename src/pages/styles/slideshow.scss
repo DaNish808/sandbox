@@ -2,6 +2,9 @@
 
 
 .slideshow-container {
+  margin: auto;
+  max-width: 800px;
+  min-width: 440px;
   background-color: $lightgray;
   border-radius: 2rem;
 

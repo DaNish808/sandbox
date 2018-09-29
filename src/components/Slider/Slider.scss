@@ -1,6 +1,11 @@
-@import '../../styles/colors';
 
-$unfilled-color:  hsl(hue($background-color), saturation($background-color), 87%);
+$filled-color: green;
+$unfilled-color: grey;
+$text-color: black;
+
+.slider-container {
+  min-width: 300px;
+}
 
 .sliderbar-container {
   height: 20px;
@@ -22,14 +27,14 @@ $unfilled-color:  hsl(hue($background-color), saturation($background-color), 87%
 }
 .sliderbar-filled {
   width: 50%;
-  background-color: $primary-color;
+  background-color: $filled-color;
 }
 .slider-button {
   z-index: 2;
   position: absolute;
   top: 0; left: 50%;
   transform: translateX(-50%);
-  background-color: $primary-color;
+  background-color: $filled-color;
   border-radius: 50%;
 }
 .slider-button-indicator {
@@ -44,7 +49,7 @@ $unfilled-color:  hsl(hue($background-color), saturation($background-color), 87%
   content: ''
 }
 .slider-button:hover .slider-button-indicator {
-  background-color: $primary-color;
+  background-color: $filled-color;
 }
 
 .endpoint {
@@ -55,7 +60,7 @@ $unfilled-color:  hsl(hue($background-color), saturation($background-color), 87%
 }
 .endpoint-left {
   left: -2px;
-  background-color: $primary-color;
+  background-color: $filled-color;
 }
 .endpoint-right {
   right: -2px;
