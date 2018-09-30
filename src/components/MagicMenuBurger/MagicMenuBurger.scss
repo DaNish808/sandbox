@@ -1,13 +1,18 @@
 @import "../../styles/colors";
 
-$side-len: 50%;
+$text-color: $darkred;
+$side-len: 100px;
 $line-thickness: 15%;
 $line-end-radius: ($line-thickness / 1%) / 2 * 1px; 
 
 .magic-menu-burger {
+  margin: auto;
+  width: min-content;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition-property: transform;
+  transition-duration: 500ms;
 
   .magic-menu-burger-graphic {
     height: $side-len * 0.9;

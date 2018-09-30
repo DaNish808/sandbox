@@ -7,8 +7,17 @@ class MagicMenuBurger extends PureComponent {
   render() {
     const { strokeWidth, leadEdge, tailEdge } = this
     const { menuOpen, onClick, style } = this.props
+
+    const burgerRotation = menuOpen ? { transform: 'rotate(-90deg)' } : {};
+
     return(
-      <div className="magic-menu-burger" onClick={onClick} style={style}>
+      <div className="magic-menu-burger" 
+        onClick={onClick} 
+        style={{
+          ...style,
+          ...burgerRotation
+        }}
+      >
         <div className="magic-menu-burger-graphic">
           <div 
             className="menu-burger-line line-a" 

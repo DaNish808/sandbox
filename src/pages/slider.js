@@ -20,7 +20,7 @@ class IndexPage extends React.Component {
 
     return (
       <main className="page slider-page">
-        <h1>Custom Slider Component</h1>
+        <h1>Customizable Slider Component</h1>
         <Slider
           min="0"
           max="10"

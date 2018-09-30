@@ -7,6 +7,8 @@
     "gatsby": "^1.9.247",
     "gatsby-link": "^1.6.40",
     "gatsby-plugin-react-helmet": "^2.0.10",
+    "gatsby-plugin-sass": "^1.0.26",
+    "node-sass": "^4.9.3",
     "react-helmet": "^5.2.0",
     "react-pointable": "^1.1.1"
   },
@@ -18,7 +20,8 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve public/"
   },
   "devDependencies": {
     "prettier": "^1.12.0"

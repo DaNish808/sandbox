@@ -22,10 +22,11 @@ class Parallaxer extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener(this.scrollListener);
+    window.removeEventListener('scroll', this.scrollListener);
   }
 
   render() {
+    const { scrollY } = this.state;
     const { top, bottom } = this.props;
     return (
         <div className="background-container" style={{

@@ -1,0 +1,24 @@
+
+h2 {
+  margin: 2rem 0 3rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.page-links {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  transform: translateY(55%);
+  transition-property: transform;
+  transition-delay: 500ms;
+  transition-duration: 500ms;
+
+  li {
+    margin: 0.5rem 0;
+  }
+}
+
+.page-links.rolled-up {
+  transform: rotateX(90deg);
+}
